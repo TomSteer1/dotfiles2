@@ -10,4 +10,7 @@ source $DOTFILES/zsh/alias
 source $DOTFILES/zsh/binds
 source $DOTFILES/zsh/functions
 
-
+if [[ -e $DOTFILES/zsh/local ]];
+then
+	source $DOTFILES/zsh/local
+fi

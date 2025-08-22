@@ -1,3 +1,8 @@
+if ! command -v dr >/dev/null 2>&1
+then
+	exit 0
+fi
+
 _dockerrun_script()
 {
   _script_commands=$(dr list | tail -n +2)
