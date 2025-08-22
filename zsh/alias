@@ -1,0 +1,38 @@
+alias zc="vim ~/.zshrc"
+alias l="ls -lh"
+alias la="ls -la"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias cp="cp -i"                                                # Confirm before overwriting something
+alias df='df -h'                                                # Human-readable sizes
+alias free='free -m'                                            # Show sizes in MB
+alias gitu='git add . && git commit && git push'
+alias clear="printf '\033[2J\033[3J\033[1;1H'"
+alias c="printf '\033[2J\033[3J\033[1;1H'"
+alias tl="task list"
+alias gdb="gdb -q"
+alias zathura="zathura --fork"
+alias size="du -sh * 2>/dev/null | sort -h"
+alias temp-path='export PATH="$(pwd)":"${PATH}"'
+alias xc="xclip -selection clipboard"
+
+if command -v xdg-open >/dev/null 2>&1
+then
+	alias open="xdg-open"
+fi
+
+if command -v nvim >/dev/null 2>&1
+then
+	alias vim="nvim"
+fi
+
+if command -v exa >/dev/null 2>&1
+then 
+	alias ls="exa"
+fi
+if command -v bat >/dev/null 2>&1
+then
+	alias cat="bat"
+fi
+

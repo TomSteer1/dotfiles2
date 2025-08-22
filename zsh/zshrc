@@ -1,0 +1,13 @@
+export DOTFILES=$HOME/Repos/dotfiles
+
+plugins=(git gcloud zsh-autosuggestions)
+
+source $DOTFILES/zsh/options
+source $DOTFILES/zsh/variables
+source $ZSH/oh-my-zsh.sh
+source $DOTFILES/zsh/autocomplete
+source $DOTFILES/zsh/alias
+source $DOTFILES/zsh/binds
+source $DOTFILES/zsh/functions
+
+

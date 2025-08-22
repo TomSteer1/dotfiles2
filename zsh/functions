@@ -1,0 +1,11 @@
+# Create a new directory and enter it
+function mk() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Convert prowler output csv into google sheets format
+prowler_convert() {
+ cat $1 | awk -F ';' '{print $11 "\t" $19}' | uniq | tail -n +2
+}
+
+
