@@ -1,3 +1,4 @@
+alias ls='ls --color=auto'
 alias zc="vim ~/.zshrc"
 alias l="ls -lh"
 alias la="ls -la"

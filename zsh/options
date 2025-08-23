@@ -14,7 +14,4 @@ setopt autocd                                                   # if only direct
 setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
 setopt histignorespace                                          # Don't save commands that start with space
 
-export PKGFILE_PROMPT_INSTALL_MISSING=1
-export LS_OPTIONS='--color=auto'
-export EDITOR="vim"
-alias ls='ls --color=auto'
+
