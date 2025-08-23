@@ -1,6 +1,6 @@
 source $DOTFILES/zsh/plugins
 
-plugins=(git gcloud zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git gcloud zsh-autosuggestions zsh-syntax-highlighting fzf)
 
 source $DOTFILES/zsh/options
 source $DOTFILES/zsh/variables

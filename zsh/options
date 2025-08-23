@@ -16,4 +16,5 @@ setopt histignorespace                                          # Don't save com
 
 export PKGFILE_PROMPT_INSTALL_MISSING=1
 export LS_OPTIONS='--color=auto'
+export EDITOR="vim"
 alias ls='ls --color=auto'
