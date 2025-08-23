@@ -1,6 +1,6 @@
-export DOTFILES=$HOME/Repos/dotfiles
+source $DOTFILES/zsh/plugins
 
-plugins=(git gcloud zsh-autosuggestions)
+plugins=(git gcloud zsh-autosuggestions zsh-syntax-highlighting)
 
 source $DOTFILES/zsh/options
 source $DOTFILES/zsh/variables

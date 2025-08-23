@@ -1,4 +1,4 @@
-ZSH_THEME="candy"
+ZSH_THEME="dst"
 HYPHEN_INSENSITIVE="true"
 
 setopt correct                                                  # Auto correct mistakes
