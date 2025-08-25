@@ -1,5 +1,5 @@
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$PATH:$HOME/scripts/bin
+export PATH=$PATH:$HOME/Repos/scripts/bin
 export PIP_REQUIRE_VIRTUALENV=true
 export PATH="$PATH:$HOME/.local/bin"
 export PKGFILE_PROMPT_INSTALL_MISSING=1
