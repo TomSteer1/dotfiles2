@@ -19,5 +19,5 @@ source $DOTFILES/zsh/functions
 
 if [[ -e $DOTFILES/zsh/local ]];
 then
-	source $DOTFILES/zsh/local
+#	source $DOTFILES/zsh/local
 fi
