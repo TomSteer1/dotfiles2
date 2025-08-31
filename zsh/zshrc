@@ -1,5 +1,4 @@
 source $DOTFILES/zsh/plugins
-
 plugins=(
 	git 
 	gcloud 
@@ -11,13 +10,13 @@ plugins=(
 
 source $DOTFILES/zsh/options
 source $DOTFILES/zsh/variables
-source $ZSH/oh-my-zsh.sh
-source $DOTFILES/zsh/autocomplete
 source $DOTFILES/zsh/alias
 source $DOTFILES/zsh/binds
 source $DOTFILES/zsh/functions
-
 if [[ -e $DOTFILES/zsh/local ]];
 then
 #	source $DOTFILES/zsh/local
 fi
+
+source $ZSH/oh-my-zsh.sh
+source $DOTFILES/zsh/autocomplete

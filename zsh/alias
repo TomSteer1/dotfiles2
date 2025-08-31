@@ -17,7 +17,7 @@ alias zathura="zathura --fork"
 alias size="du -sh * 2>/dev/null | sort -h"
 alias temp-path='export PATH="$(pwd)":"${PATH}"'
 alias xc="xclip -selection clipboard"
-
+alias feroxbuster="feroxbuster --no-state"
 if command -v xdg-open >/dev/null 2>&1
 then
 	alias open="xdg-open"
