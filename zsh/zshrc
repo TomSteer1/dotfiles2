@@ -1,22 +1,29 @@
 source $DOTFILES/zsh/plugins
 plugins=(
-	git 
-	gcloud 
-	zsh-autosuggestions 
-	zsh-syntax-highlighting 
+	git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
 	fzf
-	ssh-agent
 )
-
 source $DOTFILES/zsh/options
 source $DOTFILES/zsh/variables
 source $DOTFILES/zsh/alias
 source $DOTFILES/zsh/binds
 source $DOTFILES/zsh/functions
+# Check if includes.d directory exists and source all files in it
+if [[ -d $DOTFILES/zsh/includes.d ]];
+then
+	for file in $DOTFILES/zsh/includes.d/*;
+	do
+		[[ -e $file ]] && source $file
+	done
+fi
+
 if [[ -e $DOTFILES/zsh/local ]];
 then
-#	source $DOTFILES/zsh/local
+	source $DOTFILES/zsh/local
 fi
+fpath=($HOME/.docker/completions $fpath)
 
 source $ZSH/oh-my-zsh.sh
 source $DOTFILES/zsh/autocomplete

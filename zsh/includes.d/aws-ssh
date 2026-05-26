@@ -1,0 +1,37 @@
+#AWS MFA profile configuration
+function set_aws_keys {
+  aws configure set aws_access_key_id  ${2} --profile=${1}-mfa
+  aws configure set aws_secret_access_key  ${3} --profile=${1}-mfa
+  aws configure set aws_session_token  ${4} --profile=${1}-mfa
+}
+
+function aws_mfa_login() {
+  USER_NAME=$(aws iam get-user --profile ${1} \
+      --query 'User.UserName' \
+      --output text)
+
+  MFA_SERIAL_NUMBER=$(aws iam list-mfa-devices --profile ${1} \
+      --user-name ${USER_NAME} \
+      --query 'MFADevices[].SerialNumber' \
+      --output text)
+
+  MFA_SESSION=$(aws sts get-session-token --profile ${1} \
+      --serial-number ${MFA_SERIAL_NUMBER} \
+      --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
+      --output text \
+      --token-code ${2})
+
+  # Split the MFA_SESSION into its three components
+  read -r ACCESS_KEY_ID SECRET_ACCESS_KEY SESSION_TOKEN <<< $(echo ${MFA_SESSION})
+
+  # Configure new AWS profile using the split values
+  set_aws_keys ${1} ${ACCESS_KEY_ID} ${SECRET_ACCESS_KEY} ${SESSION_TOKEN}
+
+
+  # verify the key configuration exited successfully
+  if [ $? -ne 0 ]; then
+    echo "Error setting the MFA credentials, please try again"
+  else
+    echo "MFA credentials configured successfully"
+  fi
+}

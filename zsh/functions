@@ -9,3 +9,38 @@ prowler_convert() {
 }
 
 
+
+assume-role() {
+  local role_arn="${1}"
+  local session_name="${2:-session-$(date +%s)}"
+
+  if [[ -z "${role_arn}" ]]; then
+    echo "Usage: assume-role <role-arn> [session-name]"
+    return 1
+  fi
+
+  local creds
+  creds=$(aws sts assume-role \
+    --role-arn "${role_arn}" \
+    --role-session-name "${session_name}" \
+    --output json 2>&1)
+
+  if [[ $? -ne 0 ]]; then
+    echo "Failed to assume role: ${creds}"
+    return 1
+  fi
+
+  export AWS_ACCESS_KEY_ID=$(echo "${creds}" | jq -r '.Credentials.AccessKeyId')
+  export AWS_SECRET_ACCESS_KEY=$(echo "${creds}" | jq -r '.Credentials.SecretAccessKey')
+  export AWS_SESSION_TOKEN=$(echo "${creds}" | jq -r '.Credentials.SessionToken')
+
+  echo "Assumed role: ${role_arn}"
+  aws sts get-caller-identity
+}
+
+unassume-role() {
+  unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
+  echo "Reverted to default credentials"
+  aws sts get-caller-identity
+}
+
